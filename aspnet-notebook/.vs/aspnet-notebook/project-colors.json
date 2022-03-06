@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "00f33d4f-9aa3-4002-bd0b-e726c63060bd": {
+      "ProjectGuid": "00f33d4f-9aa3-4002-bd0b-e726c63060bd",
+      "DisplayName": "aspnet-notebook",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
