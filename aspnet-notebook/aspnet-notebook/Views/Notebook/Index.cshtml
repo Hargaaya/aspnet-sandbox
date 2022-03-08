@@ -1,25 +1,10 @@
 ﻿@model NotebookViewModel
 
 @{
-    ViewData["Title"] = "Notebook Page";
+    ViewData["Title"] = "Current Notes";
 }
 
-<div class="panel panel-default todo-panel">
-    <div class="panel-heading">@ViewData["Title"]</div>
-
-    <ul>
-        @foreach (var item in Model.Items)
-        {
-            <li>
-                <h1 class="item-title">@item.Title</h1>
-                <p class="item-text">@item.Text</p>
-                @if (item.IsRead)
-                {
-                    <p class="item-read">read</p>
-                }
-            </li>
-        }
-    </ul>
-
+<div>
+    <h1>@ViewData["Title"]</h1>
 </div>
 
