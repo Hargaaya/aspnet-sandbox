@@ -25,11 +25,10 @@ namespace aspnet_notebook.Controllers
         }
 
         [HttpPost]
-        public IActionResult New(string title, string text)
+        public IActionResult New([Bind("Title,Text")] NotebookItem newNote)
         {
-            Console.WriteLine($"the title is: {title}, and the text: {text}");
+            Console.WriteLine($"the title is: {newNote.Title}, and the text: {newNote.Text}");
 
-            NotebookItem newNote = new NotebookItem { Title = title, Text = text };
             _context.NotebookItems.Add(newNote);
             _context.SaveChanges();
 
