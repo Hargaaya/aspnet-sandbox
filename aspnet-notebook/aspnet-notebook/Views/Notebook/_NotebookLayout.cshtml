@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Notebook</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+
+
+    <ul class="nav">
+        <li>
+            <h2>Notebook App</h2>
+        </li>
+        <li>
+            <a asp-controller="notebook" asp-action="index">Current Notes</a>
+        </li>
+        <li>
+            <a asp-controller="notebook" asp-action="new">New Note</a>
+        </li>
+    </ul>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+
+</body>
+
+</html>

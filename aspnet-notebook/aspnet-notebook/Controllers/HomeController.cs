@@ -11,6 +11,7 @@ namespace aspnet_notebook.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            Console.WriteLine(_logger);
         }
 
         public IActionResult Index()

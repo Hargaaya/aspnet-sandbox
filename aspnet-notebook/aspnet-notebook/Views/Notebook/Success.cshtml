@@ -5,7 +5,11 @@
     ViewBag.title = "New Note Added!";
 }
 
-<h1>@ViewBag.title</h1>
+<div class="added-note-container">
+    <h1>@ViewBag.title</h1>
 
-<h3>@Model?.Title</h3>
-<p>@Model?.Text</p>
+    <div class="added-note">
+        <h3>@Model?.Title</h3>
+        <p>@Model?.Text</p>
+    </div>
+</div>
