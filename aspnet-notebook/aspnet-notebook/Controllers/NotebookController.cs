@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using aspnet_notebook.Data;
 using aspnet_notebook.Models;
+using System.Linq;
 
 namespace aspnet_notebook.Controllers
 {
@@ -15,6 +16,7 @@ namespace aspnet_notebook.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.list = _context.NotebookItems.ToList();
             return View();
         }
 

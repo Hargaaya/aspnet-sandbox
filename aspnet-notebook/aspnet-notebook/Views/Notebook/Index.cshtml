@@ -2,7 +2,20 @@
     ViewData["Title"] = "Current Notes";
 }
 
-<div>
-    <h1 class="index-title">@ViewData["Title"]</h1>
+<h1 class="index-title">@ViewData["Title"]</h1>
+
+<div class="note-container">
+    @foreach (var note in ViewBag.list)
+    {
+        <div class="single-note">
+            <h2>@note.Title</h2>
+            <p>@note.Text</p>
+            <span>@note.Created</span>
+            @if (note.IsRead)
+            {
+                <div class="read"></div>
+            }
+        </div>
+    }
 </div>
 
