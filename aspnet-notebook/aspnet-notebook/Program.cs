@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using aspnet_notebook.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<NotebookContext>(options =>
+options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=NotebookAppDb"));
 
 var app = builder.Build();
 
