@@ -36,5 +36,12 @@ namespace aspnet_notebook.Controllers
 
             return View("Success", newNote);
         }
+
+        public IActionResult Note(Guid id)
+        {
+            var note = _context.NotebookItems.Where(item => item.ItemId == id).FirstOrDefault();
+            Console.WriteLine(note);
+            return View(note);
+        }
     }
 }

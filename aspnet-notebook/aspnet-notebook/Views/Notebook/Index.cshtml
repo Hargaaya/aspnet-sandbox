@@ -11,9 +11,13 @@
             <h2>@note.Title</h2>
             <p>@note.Text</p>
             <span>@note.Created</span>
+            <a asp-controller="Notebook" asp-action="Note" asp-route-id="@note.ItemId">Read more...</a>
             @if (note.IsRead)
             {
-                <div class="read"></div>
+                <div class="read">You've read this already 😊</div>
+            } else
+            {
+                <div class="not-read">You haven't read this yet 😔</div>
             }
         </div>
     }
