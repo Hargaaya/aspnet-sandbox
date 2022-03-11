@@ -25,7 +25,7 @@ header ul, header ul span {
             color: black;
         }
 
-            header ul li a:hover, .btn {
+            header ul li a:hover, .btn:hover {
                 box-shadow: 3px 3px black;
             }
 
@@ -33,3 +33,25 @@ header ul, header ul span {
     max-width: 1024px;
     margin: 50px auto;
 }
+
+.home-index {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+    .home-index h1 {
+        text-align: center;
+        font-size: 40px;
+        padding: 5px 0;
+    }
+
+    .home-index p {
+        padding: 5px;
+        margin-bottom: 40px;
+    }
+
+    .home-index a {
+        margin: 0 40px 0 20px;
+        padding: 10px 40px;
+    }
