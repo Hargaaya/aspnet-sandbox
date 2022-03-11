@@ -1,18 +1,35 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    font-family: 'Patrick Hand', cursive;
+    margin: 0;
+}
+
+header ul, header ul span {
+    height: 50px;
+    border-bottom: 4px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    header ul li {
+        list-style: none;
+        margin: 0 20px 0 0;
+    }
+
+        header ul li a, .btn {
+            font-size: 20px;
+            padding: 2px 50px;
+            border: 3px solid black;
+            box-shadow: 4px 4px black;
+            text-decoration: none;
+            color: black;
+        }
+
+            header ul li a:hover, .btn {
+                box-shadow: 3px 3px black;
+            }
+
+.main-container {
+    max-width: 1024px;
+    margin: 50px auto;
 }
