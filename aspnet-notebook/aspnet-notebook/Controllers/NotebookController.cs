@@ -40,6 +40,11 @@ namespace aspnet_notebook.Controllers
         public IActionResult Note(Guid id)
         {
             var note = _context.NotebookItems.Where(item => item.ItemId == id).FirstOrDefault();
+            if (note != null)
+            {
+                note.IsRead = true;
+                _context.SaveChanges();
+            }
             Console.WriteLine(note);
             return View(note);
         }
