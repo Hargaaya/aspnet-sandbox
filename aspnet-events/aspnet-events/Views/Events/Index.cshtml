@@ -1,0 +1,22 @@
+﻿
+
+<div class="events-index">
+    <h1>Current Events</h1>
+
+    <div class="events-container">
+        @foreach (var item in ViewBag.Events)
+        {
+            <div class="event-item">
+
+                <h3>@item.Title</h3>
+                <p>@item.Description</p>
+                <span>
+                    @item.Date.ToString("D")
+                    @item.Date.ToString("t")
+                </span>
+                <a asp-action="Join" asp-route-id=@item.EventId class="btn">Join</a>
+            </div>
+        }
+    </div>
+</div>
+
