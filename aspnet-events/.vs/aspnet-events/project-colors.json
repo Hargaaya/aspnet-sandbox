@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "eebd00ab-1b02-4a55-bcf0-8b18303a3f24": {
+      "ProjectGuid": "eebd00ab-1b02-4a55-bcf0-8b18303a3f24",
+      "DisplayName": "aspnet-events",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
