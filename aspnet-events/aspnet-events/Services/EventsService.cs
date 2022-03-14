@@ -28,8 +28,8 @@ namespace aspnet_events.Services
 
             if (e != null)
             {
-                // NEED LAZY LOADING TO NAVIGATE PROPERLY :(
-                // e.Attendees.Add(at)
+                e.Attendees.Add(at);
+                _context.SaveChanges();
             }
         }
 
