@@ -1,2 +1,32 @@
-﻿
-<h1>Join</h1>
+﻿@using aspnet_events.Models;
+@model Event;
+
+<div class="events-join">
+
+    <div class="details">
+        <h2>@Model.Title</h2>
+        @if (Model.SpotsAvailable != 0)
+        {
+            <h3>Slots available: <span>@Model.SpotsAvailable</span></h3>
+        }
+        else
+        {
+            <h3 class="red">This Event Is Fully Booked 😭</h3>
+        }
+        <h3>Address: <span>@Model.Address</span></h3>
+        <h3>
+            Date:
+            <span>
+                @Model.Date.ToString("D")
+                @Model.Date.ToString("t")
+            </span>
+        </h3>
+        <h3>Description: <span>@Model.Description</span></h3>
+
+    </div>
+
+    <form method="post" asp-action="Join" asp-route-id="@Model.EventId">
+        <input type="submit" value="Join This Event" class="btn"/>
+    </form>
+
+</div>

@@ -1,3 +1,34 @@
-﻿
+﻿@using aspnet_events.Models;
+@model Event;
 
-<h1>Confirmation</h1>
+
+<div class="events-confirmation">
+    <div class="details">
+        <h2>@Model.Title</h2>
+        @if (Model.SpotsAvailable != 0)
+        {
+            <h3>Slots available: <span>@Model.SpotsAvailable</span></h3>
+        }
+        else
+        {
+            <h3 class="red">This Event Is Fully Booked 😭</h3>
+        }
+        <h3>Address: <span>@Model.Address</span></h3>
+        <h3>
+            Date:
+            <span>
+                @Model.Date.ToString("D")
+                @Model.Date.ToString("t")
+            </span>
+        </h3>
+        <h3>Description: <span>@Model.Description</span></h3>
+    </div>
+
+    <h1>Successfully joined @Model.Title!</h1>
+
+    <span>
+        <a asp-action="Index" class="btn">View more events</a>
+        <a asp-action="Booked" class="btn">View your events</a>
+    </span>
+
+</div>
