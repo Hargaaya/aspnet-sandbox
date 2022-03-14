@@ -11,6 +11,6 @@ namespace aspnet_events.Models
         public string PhoneNumber { get; set; }
 
         // Many-to-many
-        public ICollection<Event> Events { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

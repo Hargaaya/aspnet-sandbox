@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using aspnet_events.Data;
 
@@ -11,9 +12,10 @@ using aspnet_events.Data;
 namespace aspnet_events.Migrations
 {
     [DbContext(typeof(EventsContext))]
-    partial class EventsContextModelSnapshot : ModelSnapshot
+    [Migration("20220314170021_LazyLoading")]
+    partial class LazyLoading
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

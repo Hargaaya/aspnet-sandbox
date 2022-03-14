@@ -12,6 +12,6 @@ namespace aspnet_events.Models
         public string PhoneNumber { get; set; }
 
         // Principal entity, One-to-many
-        public List<Event> Events { get; set; }
+        public virtual List<Event> Events { get; set; }
     }
 }

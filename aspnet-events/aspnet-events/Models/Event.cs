@@ -15,10 +15,10 @@ namespace aspnet_events.Models
 
         // Dependent entity, One-to-many
         public int OrganizerId { get; set; }
-        public Organizer Organizer { get; set; }
+        public virtual Organizer Organizer { get; set; }
 
         // Many-to-many
-        public ICollection<Attendee> Attendees { get; set; }
+        public virtual ICollection<Attendee> Attendees { get; set; }
 
     }
 }
