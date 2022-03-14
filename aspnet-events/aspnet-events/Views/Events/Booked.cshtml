@@ -1,2 +1,27 @@
-﻿
-<h1>My Events</h1>
+﻿@model List<Event>
+
+<div class="events-booked">
+    <h1>My Events</h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Organizer</th>
+        </tr>
+
+        @foreach (Event ev in Model)
+        {
+            <tr>
+                <td>@ev.Title</td>
+                <td>@ev.Date.ToString("d")</td>
+                <td>@ev.Place</td>
+                <td>@ev.OrganizerId</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

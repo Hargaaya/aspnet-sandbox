@@ -34,12 +34,20 @@ namespace aspnet_events.Controllers
         public IActionResult Confirmation(int id)
         {
             Event? ev = _es.GetEvents().Where(d => d.EventId == id).First();
+            Attendee at = _es.GetAttendee();
+            _es.RegisterAttendeeToEvent(ev, at);
+
             return View("Confirmation", ev);
         }
 
         public IActionResult Booked()
         {
-            return View();
+            var myEvents = _es.AttendeeRegistry(_es.GetAttendee());
+            foreach (var ev in myEvents)
+            {
+                Console.WriteLine(ev.Title);
+            }
+            return View(myEvents);
         }
     }
 }

@@ -156,3 +156,30 @@ header ul, header ul span {
     .events-confirmation span .btn {
         margin: 0 30px;
     }
+
+.events-booked {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .events-booked table {
+        border: 4px solid black;
+        border-collapse: collapse;
+    }
+
+        .events-booked table th {
+            border: 3px solid black;
+            background-color: #CDCDCD;
+            padding: 6px;
+        }
+
+        .events-booked table td {
+            border: 3px solid black;
+            padding: 3px;
+            text-align: center;
+        }
+
+        .events-booked table tr:nth-child(2n+1) {
+            background-color: #EFEFEF;
+        }
