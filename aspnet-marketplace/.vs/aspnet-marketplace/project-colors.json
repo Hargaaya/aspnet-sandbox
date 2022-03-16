@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7b61daae-eeaa-448a-9396-71d03fc3e163": {
+      "ProjectGuid": "7b61daae-eeaa-448a-9396-71d03fc3e163",
+      "DisplayName": "aspnet-marketplace",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
