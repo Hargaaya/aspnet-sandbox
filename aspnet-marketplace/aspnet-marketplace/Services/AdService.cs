@@ -15,7 +15,7 @@ namespace aspnet_marketplace.Services
 
         public List<Advertisement> GetAdvertisementList()
         {
-            return _context.Advertisements.ToList();
+            return _context.Advertisements.Include(ad => ad.Images).ToList();
         }
 
         public List<Advertisement> GetAdvertisements(Category category)

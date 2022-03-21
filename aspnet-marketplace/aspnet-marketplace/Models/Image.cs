@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_marketplace.Models
 {
@@ -12,6 +13,8 @@ namespace aspnet_marketplace.Models
 
 
         public int AdvertisementId { get; set; }
+
+        [NotMapped]
         public Advertisement Advertisement { get; set; }
     }
 }
