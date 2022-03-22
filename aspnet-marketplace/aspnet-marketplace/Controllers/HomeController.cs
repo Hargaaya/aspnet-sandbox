@@ -6,7 +6,7 @@ namespace aspnet_marketplace.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["Title"] = "Market App";
+            ViewData["Title"] = "Marketplace";
             return View();
         }
     }

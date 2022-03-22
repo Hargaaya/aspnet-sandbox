@@ -74,6 +74,6 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 
-.dtbcache.v2
+dtbcache.v2
 
-/node_modules
+node_modules/
