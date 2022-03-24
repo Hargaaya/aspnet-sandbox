@@ -4,12 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/main.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script defer src="/js/all.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>@ViewData["Title"]</title>
 </head>
 <body>
-    <h1>Layout</h1>
+
     <div class="main-container">
         @RenderBody()
+    </div>
+
+    <div class="footer">
+        <figure>
+            <figcaption>Links</figcaption>
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Item 4</a></li>
+            </ul>
+        </figure>
+
     </div>
 
     @RenderSection("scripts", required: false)

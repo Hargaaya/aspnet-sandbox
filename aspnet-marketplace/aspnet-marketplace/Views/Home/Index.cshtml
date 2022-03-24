@@ -1,6 +1,36 @@
-﻿<h1>Index</h1>
+﻿<div class="home-index">
 
-<div id="root"></div>
+    <h1>Marketplace</h1>
+
+    <form asp-controller="advertisements" asp-action="search" method="post">
+        <input type="text" placeholder="What are you looking for today?" size="30" required />
+        <select>
+            <option disabled selected>Category</option>
+            <option value="1">Clothes</option>
+            <option value="2">Furnitures</option>
+            <option value="3">Electronics</option>
+            <option value="4">Hobbies</option>
+        </select>
+    </form>
+
+    <div class="band">
+        <div>
+            <span>
+                <i class="fa-solid fa-3x fa-shirt"></i> Clothes
+            </span>
+            <span>
+                <i class="fa-solid fa-3x fa-couch"></i> Furnitures
+            </span>
+            <span>
+                <i class="fa-solid fa-3x fa-computer"></i> Electronics
+            </span>
+            <span>
+                <i class="fa-solid fa-3x fa-bicycle"></i> Hobbies
+            </span>
+        </div>
+    </div>
+
+</div>
 
 @section scripts {
 <script src="~/js/dist/Bundle.js"></script>

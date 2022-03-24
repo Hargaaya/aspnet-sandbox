@@ -1,4 +1,68 @@
 ﻿body {
-    background-color: black;
-    color: white;
+    font-family: 'Playfair Display', serif;
+    background-color: #FCFFF7;
+    color: #161616;
+    margin: 0;
+    user-select: none;
 }
+
+.home-index {
+    text-align: center;
+}
+
+    .home-index h1 {
+        font-size: 73px;
+        font-weight: 500;
+        margin: 100px 0;
+    }
+
+    .home-index form input {
+        font-family: 'Playfair Display', serif;
+        background-color: #046865;
+        border-radius: 99px;
+        font-size: 24px;
+        padding: 10px 40px;
+        outline: none;
+        border: none;
+    }
+
+        .home-index form input::placeholder {
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            color: #161616;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+    .home-index form select {
+        font-family: 'Playfair Display', serif;
+        text-align: center;
+        background-color: #046865;
+        border-radius: 99px;
+        font-size: 24px;
+        padding: 10px 20px;
+        margin-left: 20px;
+        outline: none;
+        border: none;
+        appearance: none;
+    }
+
+    .home-index .band {
+        background-color: #046865;
+        margin-top: 100px;
+    }
+
+        .home-index .band div {
+            display: flex;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .home-index .band span {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            font-size: 24px;
+            font-weight: 500;
+            margin: 0 auto;
+        }
