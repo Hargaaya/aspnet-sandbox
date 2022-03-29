@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace aspnet_events.Migrations.Identity
 {
-    public partial class AddEvents : Migration
+    public partial class AddEvent : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,12 +48,6 @@ namespace aspnet_events.Migrations.Identity
                 nullable: true,
                 oldClrType: typeof(int),
                 oldType: "int");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Id",
-                table: "Events",
-                type: "nvarchar(max)",
-                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "UserEventEventId",
@@ -103,53 +97,53 @@ namespace aspnet_events.Migrations.Identity
                 keyColumn: "Id",
                 keyValue: "1fb96894-87ad-4af5-9e02-e3703f2259f7",
                 column: "ConcurrencyStamp",
-                value: "ed235168-e431-4e3d-b0be-dff08a28d987");
+                value: "87827f05-3fb0-40cc-92f2-7e990305418f");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "2fea37b6-ad6c-4122-933b-76da443b4db5",
                 column: "ConcurrencyStamp",
-                value: "ee0750cc-641e-42da-977a-99556ee12c25");
+                value: "6bb79921-cb52-4f13-90f0-55bc43de53ed");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "da981ce2-f658-4e40-87c6-d93d5e2ffbe2",
                 column: "ConcurrencyStamp",
-                value: "790fd49d-2c5c-4aa3-a6b4-11a9fd06abbb");
+                value: "a14e1e11-bdf3-410e-9ed0-56986dd3683c");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "0c5cdc66-a621-4c0c-9ccd-f661674dc62d",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "8e27fb12-74d8-4d8d-888f-b0f303f58372", "AQAAAAEAACcQAAAAEJn6WSVE8JvAmqcJCbdoVIYyP4GHgsoK8OY5iKQpyfjD3mPJ7PLLwVA1wpL5T5fDlw==", "c7989d02-82ef-480c-9a97-6341fd202e00" });
+                values: new object[] { "3d7e5ba1-eeb3-479c-9094-4ece40253524", "AQAAAAEAACcQAAAAEI9ObAQ+HgHnqyAlfiTdhfTOyV6EyiIFumcMGk7qz8f13Bjbs2l/g4MK3LpGCmDiyg==", "7f7c9045-6dac-4529-84c8-b2dbd6a8a432" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "748a69e9-fc2f-461f-a2c5-cc3d22771351",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "ec3ea28f-184c-4775-8d67-816fb343835a", "AQAAAAEAACcQAAAAEK1gU2sa9X65OJKmiyYMn91JD+A6FTj6KHy1VrIT3z9xDh9fgL3/rJ9HFQGQDVhNow==", "f759b1f1-445d-4f06-866f-264af84781d2" });
+                values: new object[] { "b9f4c944-41d9-4a5e-bc16-3a6574fef531", "AQAAAAEAACcQAAAAEJjA6RgjdjxhTBpHlArt6v3XbJWbiaC3PhKPXtxyXaejmMge/HeLNOzBIhrsyCmzFA==", "0ba527cd-d758-417f-869b-c68527db728e" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "781231d3-90c5-4e55-b7c9-e27bd26be513",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "71e7af10-705c-4793-be54-6f77586ab0f3", "AQAAAAEAACcQAAAAEC/HtRHhYvvCc+fXMDSqcBlVakDG1WPcNV7yyQGluCqM2QpOX9GRb5zva8rptEYj6w==", "644cfcb7-28d0-4fd4-8ab7-14c6426523bb" });
+                values: new object[] { "d9f7357e-7479-42f1-b8c5-1e4de8a6665d", "AQAAAAEAACcQAAAAEB7iIsEKlyeVkaiaKuwuMq+PoyCkus4K0cWtHIudOobKT3pr5MvaFoSsoNYxLPJlOg==", "c33bd9a6-df77-40bd-8109-8c86c0a87526" });
 
             migrationBuilder.InsertData(
                 table: "Events",
-                columns: new[] { "EventId", "Address", "Date", "Description", "Id", "OrganizerId", "Place", "SpotsAvailable", "Title" },
+                columns: new[] { "EventId", "Address", "Date", "Description", "OrganizerId", "Place", "SpotsAvailable", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Grazie 15, 957864 Pregi", new DateTimeOffset(new DateTime(2022, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Stora affärer is hosting a festival to start of this years spaghetti harvest in Italy", "781231d3-90c5-4e55-b7c9-e27bd26be513", null, "Mi scusi", 40, "Spaghetti harvesting festival" },
-                    { 2, "Sveavägen 73, 113 80 Stockholm", new DateTimeOffset(new DateTime(2022, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "The cockroach Lil Pest is having a listening party for his 9th album", "781231d3-90c5-4e55-b7c9-e27bd26be513", null, "Stadsbiblioteket", 120, "Lil Pest Listening party" },
-                    { 3, "Humongous Street 23, 80468 Las Vegas, Nevada", new DateTimeOffset(new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Annual international event dedicated to the commercial concrete and masonry construction industries.", "781231d3-90c5-4e55-b7c9-e27bd26be513", null, "The Gazino", 1500, "World of Concrete" },
-                    { 4, "Big Avenue, 90652 Dallas, Texas", new DateTimeOffset(new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), "The show will display the next wave of innovation that will shape 2022", "781231d3-90c5-4e55-b7c9-e27bd26be513", null, "Big Avenue", 1000, "CES 2022" },
-                    { 5, "Lorem 23, 0xFFFF Ipsum", new DateTimeOffset(new DateTime(2022, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed to", "781231d3-90c5-4e55-b7c9-e27bd26be513", null, "127.0.0.1", 5, "Lorem ipsum Conference" }
+                    { 1, "Grazie 15, 957864 Pregi", new DateTimeOffset(new DateTime(2022, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Stora affärer is hosting a festival to start of this years spaghetti harvest in Italy", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Mi scusi", 40, "Spaghetti harvesting festival" },
+                    { 2, "Sveavägen 73, 113 80 Stockholm", new DateTimeOffset(new DateTime(2022, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "The cockroach Lil Pest is having a listening party for his 9th album", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Stadsbiblioteket", 120, "Lil Pest Listening party" },
+                    { 3, "Humongous Street 23, 80468 Las Vegas, Nevada", new DateTimeOffset(new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Annual international event dedicated to the commercial concrete and masonry construction industries.", "781231d3-90c5-4e55-b7c9-e27bd26be513", "The Gazino", 1500, "World of Concrete" },
+                    { 4, "Big Avenue, 90652 Dallas, Texas", new DateTimeOffset(new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), "The show will display the next wave of innovation that will shape 2022", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Big Avenue", 1000, "CES 2022" },
+                    { 5, "Lorem 23, 0xFFFF Ipsum", new DateTimeOffset(new DateTime(2022, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed to", "781231d3-90c5-4e55-b7c9-e27bd26be513", "127.0.0.1", 5, "Lorem ipsum Conference" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -240,10 +234,6 @@ namespace aspnet_events.Migrations.Identity
                 table: "Events",
                 keyColumn: "EventId",
                 keyValue: 5);
-
-            migrationBuilder.DropColumn(
-                name: "Id",
-                table: "Events");
 
             migrationBuilder.DropColumn(
                 name: "UserEventEventId",

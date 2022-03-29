@@ -192,48 +192,48 @@ namespace aspnet_events.Migrations.Identity
                         {
                             Id = "748a69e9-fc2f-461f-a2c5-cc3d22771351",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ec3ea28f-184c-4775-8d67-816fb343835a",
+                            ConcurrencyStamp = "b9f4c944-41d9-4a5e-bc16-3a6574fef531",
                             Email = "Karlsonpataket@telia.se",
                             EmailConfirmed = false,
                             FirstName = "Karlson",
                             LastName = "Taket",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEK1gU2sa9X65OJKmiyYMn91JD+A6FTj6KHy1VrIT3z9xDh9fgL3/rJ9HFQGQDVhNow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJjA6RgjdjxhTBpHlArt6v3XbJWbiaC3PhKPXtxyXaejmMge/HeLNOzBIhrsyCmzFA==",
                             PhoneNumber = "+46739149576",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f759b1f1-445d-4f06-866f-264af84781d2",
+                            SecurityStamp = "0ba527cd-d758-417f-869b-c68527db728e",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "71e7af10-705c-4793-be54-6f77586ab0f3",
+                            ConcurrencyStamp = "d9f7357e-7479-42f1-b8c5-1e4de8a6665d",
                             Email = "Bulle@bubble.se",
                             EmailConfirmed = false,
                             FirstName = "Bubbles",
                             LastName = "Jonóre",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEC/HtRHhYvvCc+fXMDSqcBlVakDG1WPcNV7yyQGluCqM2QpOX9GRb5zva8rptEYj6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB7iIsEKlyeVkaiaKuwuMq+PoyCkus4K0cWtHIudOobKT3pr5MvaFoSsoNYxLPJlOg==",
                             PhoneNumber = "+46091239012",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "644cfcb7-28d0-4fd4-8ab7-14c6426523bb",
+                            SecurityStamp = "c33bd9a6-df77-40bd-8109-8c86c0a87526",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "0c5cdc66-a621-4c0c-9ccd-f661674dc62d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8e27fb12-74d8-4d8d-888f-b0f303f58372",
+                            ConcurrencyStamp = "3d7e5ba1-eeb3-479c-9094-4ece40253524",
                             Email = "Streetscripters@gamb.com",
                             EmailConfirmed = false,
                             FirstName = "Street",
                             LastName = "Scripters",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEJn6WSVE8JvAmqcJCbdoVIYyP4GHgsoK8OY5iKQpyfjD3mPJ7PLLwVA1wpL5T5fDlw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI9ObAQ+HgHnqyAlfiTdhfTOyV6EyiIFumcMGk7qz8f13Bjbs2l/g4MK3LpGCmDiyg==",
                             PhoneNumber = "+45902319459",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c7989d02-82ef-480c-9a97-6341fd202e00",
+                            SecurityStamp = "7f7c9045-6dac-4529-84c8-b2dbd6a8a432",
                             TwoFactorEnabled = false
                         });
                 });
@@ -253,9 +253,6 @@ namespace aspnet_events.Migrations.Identity
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrganizerId")
@@ -283,7 +280,7 @@ namespace aspnet_events.Migrations.Identity
                             Address = "Grazie 15, 957864 Pregi",
                             Date = new DateTimeOffset(new DateTime(2022, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Description = "Stora affärer is hosting a festival to start of this years spaghetti harvest in Italy",
-                            Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
+                            OrganizerId = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             Place = "Mi scusi",
                             SpotsAvailable = 40,
                             Title = "Spaghetti harvesting festival"
@@ -294,7 +291,7 @@ namespace aspnet_events.Migrations.Identity
                             Address = "Sveavägen 73, 113 80 Stockholm",
                             Date = new DateTimeOffset(new DateTime(2022, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Description = "The cockroach Lil Pest is having a listening party for his 9th album",
-                            Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
+                            OrganizerId = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             Place = "Stadsbiblioteket",
                             SpotsAvailable = 120,
                             Title = "Lil Pest Listening party"
@@ -305,7 +302,7 @@ namespace aspnet_events.Migrations.Identity
                             Address = "Humongous Street 23, 80468 Las Vegas, Nevada",
                             Date = new DateTimeOffset(new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Description = "Annual international event dedicated to the commercial concrete and masonry construction industries.",
-                            Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
+                            OrganizerId = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             Place = "The Gazino",
                             SpotsAvailable = 1500,
                             Title = "World of Concrete"
@@ -316,7 +313,7 @@ namespace aspnet_events.Migrations.Identity
                             Address = "Big Avenue, 90652 Dallas, Texas",
                             Date = new DateTimeOffset(new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
                             Description = "The show will display the next wave of innovation that will shape 2022",
-                            Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
+                            OrganizerId = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             Place = "Big Avenue",
                             SpotsAvailable = 1000,
                             Title = "CES 2022"
@@ -327,7 +324,7 @@ namespace aspnet_events.Migrations.Identity
                             Address = "Lorem 23, 0xFFFF Ipsum",
                             Date = new DateTimeOffset(new DateTime(2022, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed to",
-                            Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
+                            OrganizerId = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             Place = "127.0.0.1",
                             SpotsAvailable = 5,
                             Title = "Lorem ipsum Conference"
@@ -379,19 +376,19 @@ namespace aspnet_events.Migrations.Identity
                         new
                         {
                             Id = "1fb96894-87ad-4af5-9e02-e3703f2259f7",
-                            ConcurrencyStamp = "ed235168-e431-4e3d-b0be-dff08a28d987",
+                            ConcurrencyStamp = "87827f05-3fb0-40cc-92f2-7e990305418f",
                             Name = "Admin"
                         },
                         new
                         {
                             Id = "da981ce2-f658-4e40-87c6-d93d5e2ffbe2",
-                            ConcurrencyStamp = "790fd49d-2c5c-4aa3-a6b4-11a9fd06abbb",
+                            ConcurrencyStamp = "a14e1e11-bdf3-410e-9ed0-56986dd3683c",
                             Name = "Organizer"
                         },
                         new
                         {
                             Id = "2fea37b6-ad6c-4122-933b-76da443b4db5",
-                            ConcurrencyStamp = "ee0750cc-641e-42da-977a-99556ee12c25",
+                            ConcurrencyStamp = "6bb79921-cb52-4f13-90f0-55bc43de53ed",
                             Name = "Attendee"
                         });
                 });
