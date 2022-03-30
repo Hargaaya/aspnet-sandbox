@@ -17,10 +17,10 @@ namespace aspnet_events.Models
         // Dependent entity, One-to-many
         [ForeignKey("User")]
         public string OrganizerId { get; set; }
-        public virtual User Organizer { get; set; }
+        public User Organizer { get; set; }
 
         // Many-to-many
-        public virtual ICollection<User> Attendees { get; set; }
+        public ICollection<User> Attendees { get; set; }
 
     }
 }

@@ -12,8 +12,8 @@ using aspnet_events.Data;
 namespace aspnet_events.Migrations.Identity
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220329054931_AddEvent")]
-    partial class AddEvent
+    [Migration("20220329200509_IdentityInit")]
+    partial class IdentityInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,96 +23,6 @@ namespace aspnet_events.Migrations.Identity
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("aspnet_events.Models.Attendee", b =>
-                {
-                    b.Property<int>("AttendeeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttendeeId"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AttendeeId");
-
-                    b.ToTable("Attendee");
-                });
-
-            modelBuilder.Entity("aspnet_events.Models.Event", b =>
-                {
-                    b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("Date")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrganizerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Place")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SpotsAvailable")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("EventId");
-
-                    b.HasIndex("OrganizerId");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("Event");
-                });
-
-            modelBuilder.Entity("aspnet_events.Models.Organizer", b =>
-                {
-                    b.Property<int>("OrganizerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrganizerId"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OrganizerId");
-
-                    b.ToTable("Organizer");
-                });
 
             modelBuilder.Entity("aspnet_events.Models.User", b =>
                 {
@@ -168,9 +78,6 @@ namespace aspnet_events.Migrations.Identity
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("UserEventEventId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -185,8 +92,6 @@ namespace aspnet_events.Migrations.Identity
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("UserEventEventId");
-
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
@@ -194,48 +99,48 @@ namespace aspnet_events.Migrations.Identity
                         {
                             Id = "748a69e9-fc2f-461f-a2c5-cc3d22771351",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b9f4c944-41d9-4a5e-bc16-3a6574fef531",
+                            ConcurrencyStamp = "6336f7ff-20eb-4477-b51e-4196898a67e0",
                             Email = "Karlsonpataket@telia.se",
                             EmailConfirmed = false,
                             FirstName = "Karlson",
                             LastName = "Taket",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEJjA6RgjdjxhTBpHlArt6v3XbJWbiaC3PhKPXtxyXaejmMge/HeLNOzBIhrsyCmzFA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJVWWjuuzgKYTTAoOQqaS1sqZomJAWq7qLqxuqI0OFQ8Vk3FrOUkbTEE8VIQc07lIA==",
                             PhoneNumber = "+46739149576",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0ba527cd-d758-417f-869b-c68527db728e",
+                            SecurityStamp = "b9f090c1-4131-4fb3-b062-a9271d40bc7c",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "781231d3-90c5-4e55-b7c9-e27bd26be513",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d9f7357e-7479-42f1-b8c5-1e4de8a6665d",
+                            ConcurrencyStamp = "200400d5-e793-4092-b610-eaeceb5fce92",
                             Email = "Bulle@bubble.se",
                             EmailConfirmed = false,
                             FirstName = "Bubbles",
                             LastName = "Jonóre",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEB7iIsEKlyeVkaiaKuwuMq+PoyCkus4K0cWtHIudOobKT3pr5MvaFoSsoNYxLPJlOg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIVzzgUH6mE6jdV2BvGeFiHr5UuAHl+U//8FXw69XBNUCcHkloAzZxAHJq/SyUty7Q==",
                             PhoneNumber = "+46091239012",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c33bd9a6-df77-40bd-8109-8c86c0a87526",
+                            SecurityStamp = "7ff1db89-378c-4768-b6c7-9ca84faf79aa",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "0c5cdc66-a621-4c0c-9ccd-f661674dc62d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d7e5ba1-eeb3-479c-9094-4ece40253524",
+                            ConcurrencyStamp = "42537766-6e69-4355-8a41-a26a436fc8c6",
                             Email = "Streetscripters@gamb.com",
                             EmailConfirmed = false,
                             FirstName = "Street",
                             LastName = "Scripters",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEI9ObAQ+HgHnqyAlfiTdhfTOyV6EyiIFumcMGk7qz8f13Bjbs2l/g4MK3LpGCmDiyg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPPr5bKQ363evVTe9cdJfmrrGfzpdV5Yo0r8uSqwT3ieMs5k/b5UZd7fcL8UkLKw7Q==",
                             PhoneNumber = "+45902319459",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f7c9045-6dac-4529-84c8-b2dbd6a8a432",
+                            SecurityStamp = "766cbb07-bde3-4653-95e8-7b3408d6f578",
                             TwoFactorEnabled = false
                         });
                 });
@@ -333,21 +238,6 @@ namespace aspnet_events.Migrations.Identity
                         });
                 });
 
-            modelBuilder.Entity("AttendeeEvent", b =>
-                {
-                    b.Property<int>("AttendeesAttendeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EventsEventId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AttendeesAttendeeId", "EventsEventId");
-
-                    b.HasIndex("EventsEventId");
-
-                    b.ToTable("AttendeeEvent");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -378,19 +268,19 @@ namespace aspnet_events.Migrations.Identity
                         new
                         {
                             Id = "1fb96894-87ad-4af5-9e02-e3703f2259f7",
-                            ConcurrencyStamp = "87827f05-3fb0-40cc-92f2-7e990305418f",
+                            ConcurrencyStamp = "4eb06333-bdfd-4e59-a10a-9bb0ec20ee64",
                             Name = "Admin"
                         },
                         new
                         {
                             Id = "da981ce2-f658-4e40-87c6-d93d5e2ffbe2",
-                            ConcurrencyStamp = "a14e1e11-bdf3-410e-9ed0-56986dd3683c",
+                            ConcurrencyStamp = "8be03b45-77be-4717-b9f9-1ceccc08bb3f",
                             Name = "Organizer"
                         },
                         new
                         {
                             Id = "2fea37b6-ad6c-4122-933b-76da443b4db5",
-                            ConcurrencyStamp = "6bb79921-cb52-4f13-90f0-55bc43de53ed",
+                            ConcurrencyStamp = "ce044618-01ed-4a28-831c-4163726f877b",
                             Name = "Attendee"
                         });
                 });
@@ -518,54 +408,28 @@ namespace aspnet_events.Migrations.Identity
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("aspnet_events.Models.Event", b =>
+            modelBuilder.Entity("UserUserEvent", b =>
                 {
-                    b.HasOne("aspnet_events.Models.Organizer", "Organizer")
-                        .WithMany("Events")
-                        .HasForeignKey("OrganizerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<string>("AttendeesId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasOne("aspnet_events.Models.User", null)
-                        .WithMany("HostedEvents")
-                        .HasForeignKey("UserId");
+                    b.Property<int>("JoinedEventsEventId")
+                        .HasColumnType("int");
 
-                    b.HasOne("aspnet_events.Models.User", null)
-                        .WithMany("JoinedEvents")
-                        .HasForeignKey("UserId1");
+                    b.HasKey("AttendeesId", "JoinedEventsEventId");
 
-                    b.Navigation("Organizer");
-                });
+                    b.HasIndex("JoinedEventsEventId");
 
-            modelBuilder.Entity("aspnet_events.Models.User", b =>
-                {
-                    b.HasOne("aspnet_events.Models.UserEvent", null)
-                        .WithMany("Attendees")
-                        .HasForeignKey("UserEventEventId");
+                    b.ToTable("UserUserEvent");
                 });
 
             modelBuilder.Entity("aspnet_events.Models.UserEvent", b =>
                 {
                     b.HasOne("aspnet_events.Models.User", "Organizer")
-                        .WithMany()
+                        .WithMany("HostedEvents")
                         .HasForeignKey("OrganizerId");
 
                     b.Navigation("Organizer");
-                });
-
-            modelBuilder.Entity("AttendeeEvent", b =>
-                {
-                    b.HasOne("aspnet_events.Models.Attendee", null)
-                        .WithMany()
-                        .HasForeignKey("AttendeesAttendeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("aspnet_events.Models.Event", null)
-                        .WithMany()
-                        .HasForeignKey("EventsEventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -619,21 +483,24 @@ namespace aspnet_events.Migrations.Identity
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("aspnet_events.Models.Organizer", b =>
+            modelBuilder.Entity("UserUserEvent", b =>
                 {
-                    b.Navigation("Events");
+                    b.HasOne("aspnet_events.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("AttendeesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("aspnet_events.Models.UserEvent", null)
+                        .WithMany()
+                        .HasForeignKey("JoinedEventsEventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("aspnet_events.Models.User", b =>
                 {
                     b.Navigation("HostedEvents");
-
-                    b.Navigation("JoinedEvents");
-                });
-
-            modelBuilder.Entity("aspnet_events.Models.UserEvent", b =>
-                {
-                    b.Navigation("Attendees");
                 });
 #pragma warning restore 612, 618
         }

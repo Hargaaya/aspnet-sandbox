@@ -9,9 +9,9 @@ namespace aspnet_events.Models
         public string LastName { get; set; }
 
         // One-to-many 
-        public List<Event> HostedEvents { get; set; }
+        public List<UserEvent> HostedEvents { get; set; }
 
         // Many-to-many
-        public ICollection<Event> JoinedEvents { get; set; }
+        public ICollection<UserEvent> JoinedEvents { get; set; }
     }
 }

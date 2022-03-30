@@ -51,36 +51,6 @@ namespace aspnet_events.Migrations.Identity
                 });
 
             migrationBuilder.CreateTable(
-                name: "Attendee",
-                columns: table => new
-                {
-                    AttendeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Attendee", x => x.AttendeeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Organizer",
-                columns: table => new
-                {
-                    OrganizerId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Organizer", x => x.OrganizerId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -198,50 +168,37 @@ namespace aspnet_events.Migrations.Identity
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     SpotsAvailable = table.Column<int>(type: "int", nullable: false),
-                    OrganizerId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    OrganizerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events", x => x.EventId);
                     table.ForeignKey(
-                        name: "FK_Events_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Events_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Events_Organizer_OrganizerId",
+                        name: "FK_Events_AspNetUsers_OrganizerId",
                         column: x => x.OrganizerId,
-                        principalTable: "Organizer",
-                        principalColumn: "OrganizerId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "AttendeeEvent",
+                name: "UserUserEvent",
                 columns: table => new
                 {
-                    AttendeesAttendeeId = table.Column<int>(type: "int", nullable: false),
-                    EventsEventId = table.Column<int>(type: "int", nullable: false)
+                    AttendeesId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    JoinedEventsEventId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AttendeeEvent", x => new { x.AttendeesAttendeeId, x.EventsEventId });
+                    table.PrimaryKey("PK_UserUserEvent", x => new { x.AttendeesId, x.JoinedEventsEventId });
                     table.ForeignKey(
-                        name: "FK_AttendeeEvent_Attendee_AttendeesAttendeeId",
-                        column: x => x.AttendeesAttendeeId,
-                        principalTable: "Attendee",
-                        principalColumn: "AttendeeId",
+                        name: "FK_UserUserEvent_AspNetUsers_AttendeesId",
+                        column: x => x.AttendeesId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AttendeeEvent_Events_EventsEventId",
-                        column: x => x.EventsEventId,
+                        name: "FK_UserUserEvent_Events_JoinedEventsEventId",
+                        column: x => x.JoinedEventsEventId,
                         principalTable: "Events",
                         principalColumn: "EventId",
                         onDelete: ReferentialAction.Cascade);
@@ -252,9 +209,9 @@ namespace aspnet_events.Migrations.Identity
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1fb96894-87ad-4af5-9e02-e3703f2259f7", "ae4dcc1d-bd52-47fc-8037-7677795739ec", "Admin", null },
-                    { "2fea37b6-ad6c-4122-933b-76da443b4db5", "8806454a-2c67-47b5-98bf-28877f235e95", "Attendee", null },
-                    { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "1b59a5e0-2670-49f0-a8aa-d077bd0b6903", "Organizer", null }
+                    { "1fb96894-87ad-4af5-9e02-e3703f2259f7", "4eb06333-bdfd-4e59-a10a-9bb0ec20ee64", "Admin", null },
+                    { "2fea37b6-ad6c-4122-933b-76da443b4db5", "ce044618-01ed-4a28-831c-4163726f877b", "Attendee", null },
+                    { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "8be03b45-77be-4717-b9f9-1ceccc08bb3f", "Organizer", null }
                 });
 
             migrationBuilder.InsertData(
@@ -262,25 +219,32 @@ namespace aspnet_events.Migrations.Identity
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "0c5cdc66-a621-4c0c-9ccd-f661674dc62d", 0, "05bcf9bb-f212-4b50-b6ac-01b0421e2cc3", "Streetscripters@gamb.com", false, "Street", "Scripters", false, null, null, null, "AQAAAAEAACcQAAAAEDhG8Hvdcn6axExRXAFOjftHk6H1Xrmipq8U6jKCbj2lVC6LoW/FhD6+LDAqX5FLKw==", "+45902319459", false, "ff7bf5f1-1a8f-46b1-87fa-2dd47be9b334", false, null },
-                    { "748a69e9-fc2f-461f-a2c5-cc3d22771351", 0, "37aaca26-6c8c-450a-8fbe-891dd1d6d7fb", "Karlsonpataket@telia.se", false, "Karlson", "Taket", false, null, null, null, "AQAAAAEAACcQAAAAEEyp/sTgBEEMGeWPQz+Cddo9PVsCeabWPC4QmcUs77BK/jC8Y6rF5l+6TjD96OPfzQ==", "+46739149576", false, "a7b3e496-6e44-4753-8f78-c4d144607a27", false, null },
-                    { "781231d3-90c5-4e55-b7c9-e27bd26be513", 0, "a4757b85-f4e2-4afa-9742-449faf99b91a", "Bulle@bubble.se", false, "Bubbles", "Jonóre", false, null, null, null, "AQAAAAEAACcQAAAAEE6QsIwMgHLR46tSldEq1HViCKvxCvX6F1+BRWLQDCZqNo+vzC8auLzjo2PQhfmRtA==", "+46091239012", false, "48d4f026-4ace-435d-84dc-f719b85c6d58", false, null }
+                    { "0c5cdc66-a621-4c0c-9ccd-f661674dc62d", 0, "42537766-6e69-4355-8a41-a26a436fc8c6", "Streetscripters@gamb.com", false, "Street", "Scripters", false, null, null, null, "AQAAAAEAACcQAAAAEPPr5bKQ363evVTe9cdJfmrrGfzpdV5Yo0r8uSqwT3ieMs5k/b5UZd7fcL8UkLKw7Q==", "+45902319459", false, "766cbb07-bde3-4653-95e8-7b3408d6f578", false, null },
+                    { "748a69e9-fc2f-461f-a2c5-cc3d22771351", 0, "6336f7ff-20eb-4477-b51e-4196898a67e0", "Karlsonpataket@telia.se", false, "Karlson", "Taket", false, null, null, null, "AQAAAAEAACcQAAAAEJVWWjuuzgKYTTAoOQqaS1sqZomJAWq7qLqxuqI0OFQ8Vk3FrOUkbTEE8VIQc07lIA==", "+46739149576", false, "b9f090c1-4131-4fb3-b062-a9271d40bc7c", false, null },
+                    { "781231d3-90c5-4e55-b7c9-e27bd26be513", 0, "200400d5-e793-4092-b610-eaeceb5fce92", "Bulle@bubble.se", false, "Bubbles", "Jonóre", false, null, null, null, "AQAAAAEAACcQAAAAEIVzzgUH6mE6jdV2BvGeFiHr5UuAHl+U//8FXw69XBNUCcHkloAzZxAHJq/SyUty7Q==", "+46091239012", false, "7ff1db89-378c-4768-b6c7-9ca84faf79aa", false, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "0c5cdc66-a621-4c0c-9ccd-f661674dc62d" });
+                values: new object[,]
+                {
+                    { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "0c5cdc66-a621-4c0c-9ccd-f661674dc62d" },
+                    { "1fb96894-87ad-4af5-9e02-e3703f2259f7", "748a69e9-fc2f-461f-a2c5-cc3d22771351" },
+                    { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "781231d3-90c5-4e55-b7c9-e27bd26be513" }
+                });
 
             migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1fb96894-87ad-4af5-9e02-e3703f2259f7", "748a69e9-fc2f-461f-a2c5-cc3d22771351" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "da981ce2-f658-4e40-87c6-d93d5e2ffbe2", "781231d3-90c5-4e55-b7c9-e27bd26be513" });
+                table: "Events",
+                columns: new[] { "EventId", "Address", "Date", "Description", "OrganizerId", "Place", "SpotsAvailable", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Grazie 15, 957864 Pregi", new DateTimeOffset(new DateTime(2022, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Stora affärer is hosting a festival to start of this years spaghetti harvest in Italy", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Mi scusi", 40, "Spaghetti harvesting festival" },
+                    { 2, "Sveavägen 73, 113 80 Stockholm", new DateTimeOffset(new DateTime(2022, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "The cockroach Lil Pest is having a listening party for his 9th album", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Stadsbiblioteket", 120, "Lil Pest Listening party" },
+                    { 3, "Humongous Street 23, 80468 Las Vegas, Nevada", new DateTimeOffset(new DateTime(2023, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Annual international event dedicated to the commercial concrete and masonry construction industries.", "781231d3-90c5-4e55-b7c9-e27bd26be513", "The Gazino", 1500, "World of Concrete" },
+                    { 4, "Big Avenue, 90652 Dallas, Texas", new DateTimeOffset(new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)), "The show will display the next wave of innovation that will shape 2022", "781231d3-90c5-4e55-b7c9-e27bd26be513", "Big Avenue", 1000, "CES 2022" },
+                    { 5, "Lorem 23, 0xFFFF Ipsum", new DateTimeOffset(new DateTime(2022, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed to", "781231d3-90c5-4e55-b7c9-e27bd26be513", "127.0.0.1", 5, "Lorem ipsum Conference" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -322,24 +286,14 @@ namespace aspnet_events.Migrations.Identity
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AttendeeEvent_EventsEventId",
-                table: "AttendeeEvent",
-                column: "EventsEventId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Events_OrganizerId",
                 table: "Events",
                 column: "OrganizerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_UserId",
-                table: "Events",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Events_UserId1",
-                table: "Events",
-                column: "UserId1");
+                name: "IX_UserUserEvent_JoinedEventsEventId",
+                table: "UserUserEvent",
+                column: "JoinedEventsEventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -360,22 +314,16 @@ namespace aspnet_events.Migrations.Identity
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "AttendeeEvent");
+                name: "UserUserEvent");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Attendee");
 
             migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Organizer");
         }
     }
 }

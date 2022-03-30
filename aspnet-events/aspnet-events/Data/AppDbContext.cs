@@ -50,6 +50,8 @@ namespace aspnet_events.Data
                 new IdentityUserRole<string> { RoleId = ORG_ROLE_ID, UserId = ORG_USER_ID },
                 new IdentityUserRole<string> { RoleId = ORG_ROLE_ID, UserId = ATT_USER_ID });
 
+            builder.Entity<UserEvent>().HasOne(e => e.Organizer).WithMany(o => o.HostedEvents);
+
             builder.Entity<UserEvent>().HasData(
                 new UserEvent { OrganizerId = ORG_USER_ID, EventId = 1, Title = "Spaghetti harvesting festival", Description = "Stora affärer is hosting a festival to start of this years spaghetti harvest in Italy", Address = "Grazie 15, 957864 Pregi", Date = new DateTime(2022, 4, 12), SpotsAvailable = 40, Place = "Mi scusi" },
                 new UserEvent { OrganizerId = ORG_USER_ID, EventId = 2, Title = "Lil Pest Listening party", Description = "The cockroach Lil Pest is having a listening party for his 9th album", Address = "Sveavägen 73, 113 80 Stockholm", Date = new DateTime(2022, 3, 31), SpotsAvailable = 120, Place = "Stadsbiblioteket" },
