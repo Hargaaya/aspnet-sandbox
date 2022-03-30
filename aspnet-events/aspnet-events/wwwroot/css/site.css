@@ -183,3 +183,12 @@ header ul, header ul span {
         .events-booked table tr:nth-child(2n+1) {
             background-color: #EFEFEF;
         }
+
+
+.red {
+    background-color: #CF2A27;
+}
+
+.green {
+    background-color: #009E0F;
+}

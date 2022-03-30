@@ -18,6 +18,7 @@ builder.Services.AddScoped<IEventsService, EventsService>();
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=EventsDb2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddScoped<IUserEventService, UserEventService>();
 
 var app = builder.Build();
 

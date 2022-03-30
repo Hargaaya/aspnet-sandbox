@@ -7,12 +7,13 @@ namespace aspnet_events.Data
 {
     public class AppDbContext : IdentityDbContext<User>
     {
+        private IPasswordHasher<User> _hasher;
 
         public DbSet<UserEvent> Events { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options, IPasswordHasher<User> Hasher) : base(options)
         {
-
+            _hasher = Hasher;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -29,14 +30,12 @@ namespace aspnet_events.Data
             const string ATT_USER_ID = "0c5cdc66-a621-4c0c-9ccd-f661674dc62d";
             const string ATT_ROLE_ID = "2fea37b6-ad6c-4122-933b-76da443b4db5";
 
-            PasswordHasher<User> ph = new PasswordHasher<User>();
-
-            User Adm = new User { Id = ADM_USER_ID, FirstName = "Karlson", LastName = "Taket", Email = "Karlsonpataket@telia.se", PhoneNumber = "+46739149576" };
-            Adm.PasswordHash = ph.HashPassword(Adm, "adminPass123");
-            User Org = new User { Id = ORG_USER_ID, FirstName = "Bubbles", LastName = "Jonóre", Email = "Bulle@bubble.se", PhoneNumber = "+46091239012" };
-            Org.PasswordHash = ph.HashPassword(Org, "orgPass123");
-            User Att = new User { Id = ATT_USER_ID, FirstName = "Street", LastName = "Scripters", Email = "Streetscripters@gamb.com", PhoneNumber = "+45902319459" };
-            Att.PasswordHash = ph.HashPassword(Att, "attPass123");
+            User Adm = new User { Id = ADM_USER_ID, FirstName = "Karlson", LastName = "Taket", UserName = "Admin", NormalizedUserName = "ADMIN", Email = "Karlsonpataket@telia.se", PhoneNumber = "+46739149576", SecurityStamp = Guid.NewGuid().ToString() };
+            Adm.PasswordHash = _hasher.HashPassword(Adm, "Password10!");
+            User Org = new User { Id = ORG_USER_ID, FirstName = "Bubbles", LastName = "Jonóre", UserName = "Organizer", NormalizedUserName = "ORGANIZER", Email = "Bulle@bubble.se", PhoneNumber = "+46091239012", SecurityStamp = Guid.NewGuid().ToString() };
+            Org.PasswordHash = _hasher.HashPassword(Org, "Password10!");
+            User Att = new User { Id = ATT_USER_ID, FirstName = "Street", LastName = "Scripters", UserName = "Attendee", NormalizedUserName = "ATTENDEE", Email = "Streetscripters@gamb.com", PhoneNumber = "+45902319459", SecurityStamp = Guid.NewGuid().ToString() };
+            Att.PasswordHash = _hasher.HashPassword(Att, "Password10!");
 
             builder.Entity<User>().HasData(Adm, Org, Att);
 

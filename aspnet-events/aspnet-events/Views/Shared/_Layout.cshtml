@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    bool loggedIn = base.User.Identity.IsAuthenticated;
+    bool admin = base.User.IsInRole("Admin");
+    bool att = base.User.IsInRole("Attendee");
+    bool org = base.User.IsInRole("Organizer");
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,9 +22,30 @@
             <span>
             <li><a asp-controller="Home" asp-action="Index">Home</a></li>
             <li><a asp-controller="Events" asp-action="Index">Events</a></li>
-            <li><a asp-controller="Events" asp-action="Booked">My Events</a></li>
+                @if (loggedIn)
+                {
+                <li><a asp-controller="Events" asp-action="Booked">My Events</a></li>
+                }
             </span>
-            <li><a href="#">Log In</a></li>
+            <span>
+                @if (admin)
+                {
+                <li><a href="#" class="red">Manage Users</a></li>
+                }
+                @if (org)
+                {
+                <li><a href="#" class="green">Organize Events</a></li>
+                <li><a href="#" class="green">Add Events</a></li>
+                }
+                @if (!loggedIn)
+                {
+                <li><a asp-controller="Account" asp-action="login">Log In</a></li>
+                }
+                else
+                {
+                <li><a asp-controller="Account" asp-action="logout">Log Out</a></li>
+                }
+            </span>
         </ul>
     </header>
 

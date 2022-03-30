@@ -1,39 +1,52 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using aspnet_events.Services;
 using aspnet_events.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace aspnet_events.Controllers
 {
     public class EventsController : Controller
     {
 
-        private IEventsService _es;
+        private IUserEventService _es;
+        private UserManager<User> _us;
 
-        public EventsController(IEventsService eventsService)
+
+        public EventsController(IUserEventService eventsService, UserManager<User> userManager)
         {
             _es = eventsService;
+            _us = userManager;
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            ViewBag.Events = _es.GetEvents();
+            ViewBag.Events = await _es.GetEvents();
             return View();
         }
 
+        [Authorize]
         [HttpGet]
-        public IActionResult Join(int id)
+        public async Task<IActionResult> JoinAsync(int id)
         {
-            Event? ev = _es.GetEvents().Where(d => d.EventId == id).First();
-            Console.WriteLine("Im here");
+            var res = await _es.GetEvents();
+            var ev = res.Where(d => d.EventId == id).First();
             return View(ev);
         }
 
+        [Authorize]
         [HttpPost]
         [ActionName("Join")]
         public IActionResult Confirmation(int id)
         {
-            Event? ev = _es.GetEvents().Where(d => d.EventId == id).First();
+            var res = _es.GetEvents();
+            var ev = res.Where(d => d.EventId == id).First();
+
+            ClaimsPrincipal CurrentUser = this.User;
+            string UserId = CurrentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             Attendee at = _es.GetAttendee();
             _es.RegisterAttendeeToEvent(ev, at);
 
@@ -49,5 +62,6 @@ namespace aspnet_events.Controllers
             }
             return View(myEvents);
         }
+        */
     }
 }

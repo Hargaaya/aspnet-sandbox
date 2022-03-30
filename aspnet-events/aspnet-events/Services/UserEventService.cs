@@ -16,13 +16,17 @@ namespace aspnet_events.Services
             return await _context.Events.ToListAsync();
         }
 
-        public async Task<List<UserEvent>> GetOrganizersEvents(User user)
+        public Task<List<UserEvent>> GetOrganizersEvents(string userId)
         {
-            //return await _context.
             throw new NotImplementedException();
         }
 
-        public Task<List<UserEvent>> GetUsersEvents(User user)
+        public Task<List<UserEvent>> GetUsersEvents(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<UserEvent>> RegisterToEvent(UserEvent userEvent, string userId)
         {
             throw new NotImplementedException();
         }

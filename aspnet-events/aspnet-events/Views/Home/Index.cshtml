@@ -10,6 +10,14 @@
         Eiusmod culpa elit tempor aliquip ut adipisicing. Qui quis consectetur veniam est nostrud laborum et occaecat. Non aliqua consequat ipsum mollit duis. Aliquip consequat aliquip nulla consectetur nisi. Officia non quis eu aliqua et ea ut qui laboris aliqua est magna. Nisi dolor sunt aute sunt qui in ex commodo commodo. Lorem consequat nostrud non consectetur non id anim.
         Aliqua deserunt incididunt excepteur fugiat pariatur irure duis nostrud veniam sunt enim officia exercitation quis. Aliquip et cillum enim incididunt sint sit sit magna. Tempor ea aliquip ea id nulla cillum irure veniam voluptate occaecat ex.
     </p>
-    <a href="#" class="btn">Reigster</a>
-    <a href="#" class="btn">Log In</a>
+    @if (!base.User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Account" asp-action="register" class="btn">Register</a>
+        <a asp-controller="Account" asp-action="login" class="btn">Log In</a>
+    }
+    else
+    {
+        <a asp-controller="Events" asp-action="Index" class="btn">Find A New Event</a>
+    }
+
 </div>

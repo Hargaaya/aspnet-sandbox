@@ -38,6 +38,12 @@ namespace aspnet_events.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await _sim.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Register()
         {
             return View();
