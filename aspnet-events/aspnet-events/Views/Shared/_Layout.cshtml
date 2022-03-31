@@ -30,12 +30,12 @@
             <span>
                 @if (admin)
                 {
-                <li><a href="#" class="red">Manage Users</a></li>
+                <li><a asp-controller="Account" asp-action="Admin" class="red">Manage Users</a></li>
                 }
                 @if (org)
                 {
-                <li><a href="#" class="green">Organize Events</a></li>
-                <li><a href="#" class="green">Add Events</a></li>
+                <li><a asp-controller="Events" asp-action="created" class="green">Organized Events</a></li>
+                <li><a asp-controller="Events" asp-action="add" class="green">Add Events</a></li>
                 }
                 @if (!loggedIn)
                 {

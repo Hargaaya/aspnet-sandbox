@@ -1,9 +1,24 @@
-﻿<form asp-action="register" method="post">
-    <input type="text" name="Username" placeholder="Username" />
-    <input type="text" name="FirstName" placeholder="Firstname" />
-    <input type="text" name="LastName" placeholder="Lastname" />
-    <input type="email" name="Email" placeholder="Email" />
-    <input type="text" name="PhoneNumber" placeholder="Phonenumber" />
-    <input type="password" name="Password" placeholder="Password" />
-    <input type="submit" value="Register" />
-</form>
+﻿@using Microsoft.AspNetCore.Identity
+@model List<IdentityError>
+
+<div class="account-register">
+    <form asp-action="tryregister" method="post">
+        <input type="text" name="Username" placeholder="Username" required />
+        <input type="text" name="FirstName" placeholder="Firstname" required />
+        <input type="text" name="LastName" placeholder="Lastname" required />
+        <input type="email" name="Email" placeholder="Email" required />
+        <input type="text" name="PhoneNumber" placeholder="Phonenumber" required />
+        <input type="password" name="Password" placeholder="Password" required />
+        <input type="submit" value="Register" />
+    </form>
+
+    @if (Model != null)
+    {
+        <h1>Fix the issues 😡</h1>
+        foreach (IdentityError ie in Model)
+        {
+            <h3>@ie.Description</h3>
+        }
+    }
+</div>
+

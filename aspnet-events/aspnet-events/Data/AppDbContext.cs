@@ -40,14 +40,14 @@ namespace aspnet_events.Data
             builder.Entity<User>().HasData(Adm, Org, Att);
 
             builder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Id = ADM_ROLE_ID, Name = "Admin" },
-                new IdentityRole { Id = ORG_ROLE_ID, Name = "Organizer" },
-                new IdentityRole { Id = ATT_ROLE_ID, Name = "Attendee" });
+                new IdentityRole { Id = ADM_ROLE_ID, Name = "Admin", NormalizedName = "ADMIN" },
+                new IdentityRole { Id = ORG_ROLE_ID, Name = "Organizer", NormalizedName = "ORGANIZER" },
+                new IdentityRole { Id = ATT_ROLE_ID, Name = "Attendee", NormalizedName = "ATTENDEE" });
 
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string> { RoleId = ADM_ROLE_ID, UserId = ADM_USER_ID },
                 new IdentityUserRole<string> { RoleId = ORG_ROLE_ID, UserId = ORG_USER_ID },
-                new IdentityUserRole<string> { RoleId = ORG_ROLE_ID, UserId = ATT_USER_ID });
+                new IdentityUserRole<string> { RoleId = ATT_ROLE_ID, UserId = ATT_USER_ID });
 
             builder.Entity<UserEvent>().HasOne(e => e.Organizer).WithMany(o => o.HostedEvents);
 

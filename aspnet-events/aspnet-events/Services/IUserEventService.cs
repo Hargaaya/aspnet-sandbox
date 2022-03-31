@@ -9,5 +9,7 @@ namespace aspnet_events.Services
         Task<List<UserEvent>> GetUsersEvents(string userId);
         Task<List<UserEvent>> GetOrganizersEvents(string userId);
         Task SetEvent(UserEvent ev);
+        Task<List<User>> GetUsers();
+        Task<List<AdminUserModel>> GetUsersWithOrg();
     }
 }

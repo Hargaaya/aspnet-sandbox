@@ -22,6 +22,12 @@ builder.Services.AddScoped<IUserEventService, UserEventService>();
 
 var app = builder.Build();
 
+using (var ss = app.Services.CreateScope())
+{
+    AppDbContext context = ss.ServiceProvider.GetRequiredService<AppDbContext>();
+    context.Database.EnsureCreated();
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

@@ -1,8 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<User> sim;
-@model List<UserEvent>
+﻿@model List<UserEvent>
 
-<div class="events-booked">
+<div class="events-created events-booked">
     <h1>My Events</h1>
 
     <table>
@@ -19,11 +17,12 @@
                 <td>@ev.Title</td>
                 <td>@ev.Date.ToString("d")</td>
                 <td>@ev.Place</td>
-                <td>@ev.Organizer</td>
+                <td>@ev.OrganizerId</td>
             </tr>
         }
-
     </table>
+
+    <button class="btn"><a asp-controller="Events" asp-action="Add">Add Event</a></button>
 </div>
 
 

@@ -49,10 +49,34 @@ namespace aspnet_events.Controllers
             return View("Confirmation", ev);
         }
 
+        [Authorize]
         public async Task<IActionResult> BookedAsync()
         {
             var myEvents = await _es.GetUsersEvents(this.GetCurrentUserId());
             return View(myEvents);
+        }
+
+        [Authorize(Roles = "Organizer")]
+        public async Task<IActionResult> CreatedAsync()
+        {
+            var OurEvents = await _es.GetOrganizersEvents(this.GetCurrentUserId());
+            return View(OurEvents);
+        }
+
+        [Authorize(Roles = "Organizer")]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Organizer")]
+        [HttpPost]
+        public async Task<IActionResult> AddAsync([Bind("Title, Description, Place, Address, SpotsAvailable, Date")] UserEvent newEvent)
+        {
+            newEvent.OrganizerId = this.GetCurrentUserId();
+            await _es.SetEvent(newEvent);
+
+            return View("Success", newEvent);
         }
 
         public string GetCurrentUserId()
