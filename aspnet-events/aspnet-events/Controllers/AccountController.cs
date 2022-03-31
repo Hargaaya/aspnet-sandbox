@@ -1,5 +1,6 @@
 ﻿using aspnet_events.Models;
 using aspnet_events.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -75,12 +76,14 @@ namespace aspnet_events.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminAsync()
         {
             var users = await _es.GetUsersWithOrg();
             return View(users);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> toggleRole(string username)
         {
             // Convert GetUsers to IQueryable????
