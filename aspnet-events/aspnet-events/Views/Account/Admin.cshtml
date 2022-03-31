@@ -1,0 +1,25 @@
+﻿@model List<AdminUserModel>
+
+<div class="account-admin">
+    <table>
+        <tr>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Is Organizer</th>
+        </tr>
+
+        @foreach (AdminUserModel u in Model)
+        {
+            <tr>
+                <td>@u.UserName</td>
+                <td>@u.Email</td>
+                <td>
+                    <form asp-action="toggleRole" asp-route-username="@u.UserName" method="post">
+                        <input type="checkbox" checked="@u.organizer" onchange="this.form.submit()" />
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

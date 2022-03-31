@@ -1,7 +1,6 @@
-﻿@model UserEvent;
+﻿@model UserEvent
 
-
-<div class="events-confirmation">
+<div class="events-success events-confirmation">
     <div class="details">
         <h2>@Model.Title</h2>
         @if (Model.SpotsAvailable != 0)
@@ -23,11 +22,11 @@
         <h3>Description: <span>@Model.Description</span></h3>
     </div>
 
-    <h1>Successfully joined @Model.Title!</h1>
+    <h1>Successfully created event: @Model.Title!</h1>
 
     <span>
-        <a asp-action="Index" class="btn">View more events</a>
-        <a asp-action="Booked" class="btn">View your events</a>
+        <a asp-action="Index" class="btn">View all events</a>
+        <a asp-action="Created" class="btn">View your events</a>
     </span>
 
 </div>
