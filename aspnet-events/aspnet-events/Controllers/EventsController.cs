@@ -39,29 +39,26 @@ namespace aspnet_events.Controllers
         [Authorize]
         [HttpPost]
         [ActionName("Join")]
-        public IActionResult Confirmation(int id)
+        public async Task<IActionResult> ConfirmationAsync(int id)
         {
-            var res = _es.GetEvents();
+            var res = await _es.GetEvents();
             var ev = res.Where(d => d.EventId == id).First();
 
-            ClaimsPrincipal CurrentUser = this.User;
-            string UserId = CurrentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            Attendee at = _es.GetAttendee();
-            _es.RegisterAttendeeToEvent(ev, at);
+            await _es.RegisterToEvent(ev, this.GetCurrentUserId());
 
             return View("Confirmation", ev);
         }
 
-        public IActionResult Booked()
+        public async Task<IActionResult> BookedAsync()
         {
-            var myEvents = _es.AttendeeRegistry(_es.GetAttendee());
-            foreach (var ev in myEvents)
-            {
-                Console.WriteLine(ev.Title);
-            }
+            var myEvents = await _es.GetUsersEvents(this.GetCurrentUserId());
             return View(myEvents);
         }
-        */
+
+        public string GetCurrentUserId()
+        {
+            ClaimsPrincipal CurrentUser = this.User;
+            return CurrentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+        }
     }
 }

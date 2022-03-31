@@ -1,4 +1,4 @@
-﻿@model List<Event>
+﻿@model List<UserEvent>
 
 <div class="events-booked">
     <h1>My Events</h1>
@@ -11,13 +11,13 @@
             <th>Organizer</th>
         </tr>
 
-        @foreach (Event ev in Model)
+        @foreach (UserEvent ev in Model)
         {
             <tr>
                 <td>@ev.Title</td>
                 <td>@ev.Date.ToString("d")</td>
                 <td>@ev.Place</td>
-                <td>@ev.Organizer.Name</td>
+                <td>@ev.OrganizerId</td>
             </tr>
         }
 

@@ -5,9 +5,9 @@ namespace aspnet_events.Services
     public interface IUserEventService
     {
         Task<List<UserEvent>> GetEvents();
-        Task<List<UserEvent>> RegisterToEvent(UserEvent userEvent, string userId);
+        Task RegisterToEvent(UserEvent userEvent, string userId);
         Task<List<UserEvent>> GetUsersEvents(string userId);
         Task<List<UserEvent>> GetOrganizersEvents(string userId);
-        void SetEvent(UserEvent ev);
+        Task SetEvent(UserEvent ev);
     }
 }
